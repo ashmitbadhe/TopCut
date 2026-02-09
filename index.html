@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TopcutBH | Luxury Editorial Grooming</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #c5a059;
+            --dark: #0a0a0a;
+            --light: #f8f8f8;
+        }
+        
+        body {
+            background-color: var(--dark);
+            color: var(--light);
+            font-family: 'Montserrat', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, .serif {
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .luxury-card {
+            background: linear-gradient(145deg, #121212, #080808);
+            border: 1px solid rgba(197, 160, 89, 0.1);
+            transition: all 0.4s ease;
+        }
+
+        .luxury-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-5px);
+        }
+
+        .btn-gold {
+            background-color: var(--gold);
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .btn-gold:hover {
+            background-color: #b38f4d;
+            letter-spacing: 1px;
+        }
+
+        .fade-in {
+            animation: fadeIn 1.2s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .service-selected {
+            border: 2px solid var(--gold) !important;
+            background: rgba(197, 160, 89, 0.05);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #222;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--gold);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header / Navigation -->
+    <nav class="fixed w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-semibold tracking-widest uppercase text-white cursor-pointer" onclick="showTab('home')">
+                Topcut<span class="text-[#c5a059]">BH</span>
+            </div>
+            <div class="hidden md:flex space-x-10 text-xs tracking-[0.2em] uppercase">
+                <button onclick="showTab('home')" class="nav-link">Home</button>
+                <button onclick="showTab('services')" class="nav-link">Services</button>
+                <button onclick="showTab('bookings')" class="nav-link">Bookings</button>
+                <button onclick="showTab('contact')" class="nav-link">Contact</button>
+            </div>
+            <!-- Mobile Toggle -->
+            <div class="md:hidden text-white" id="mobile-menu-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 8h16M4 16h16" />
+                </svg>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="pt-24 min-h-screen">
+
+        <!-- HOME TAB -->
+        <section id="home" class="tab-content active fade-in">
+            <div class="relative h-[85vh] flex items-center justify-center overflow-hidden px-6">
+                <!-- Visual Element -->
+                <div class="absolute inset-0 z-0 bg-[url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&q=80&w=2070')] bg-cover bg-center opacity-40 grayscale hover:grayscale-0 transition-all duration-1000"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+                
+                <div class="relative z-10 text-center max-w-3xl">
+                    <h2 class="text-gold tracking-[0.3em] uppercase text-sm mb-4">Hamala, Bahrain</h2>
+                    <h1 class="text-6xl md:text-8xl font-light mb-8 leading-tight">Mastery in <br><span class="italic serif">Every Cut</span></h1>
+                    <p class="text-gray-400 font-light text-lg mb-10 max-w-xl mx-auto leading-relaxed">
+                        Experience the pinnacle of grooming. Where traditional craftsmanship meets contemporary editorial style in the heart of Hamala.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <button onclick="showTab('bookings')" class="px-10 py-4 btn-gold uppercase tracking-widest text-xs">Reserve Seat</button>
+                        <button onclick="showTab('services')" class="px-10 py-4 border border-white/20 hover:border-white transition-colors uppercase tracking-widest text-xs">View Menu</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Features -->
+            <div class="max-w-7xl mx-auto px-6 py-24 grid md:grid-cols-3 gap-12 text-center">
+                <div>
+                    <h3 class="text-2xl serif mb-4 italic">Exclusive Ambience</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Designed for comfort and exclusivity. Enjoy premium refreshments while we refine your look.</p>
+                </div>
+                <div>
+                    <h3 class="text-2xl serif mb-4 italic">Artisan Barbers</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Our masters specialize in precision fades, traditional straight-razor shaves, and modern styling.</p>
+                </div>
+                <div>
+                    <h3 class="text-2xl serif mb-4 italic">Premium Products</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">We exclusively use the world's finest pomades and grooming oils to ensure lasting health and shine.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICES TAB -->
+        <section id="services" class="tab-content fade-in max-w-7xl mx-auto px-6 py-12">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-6xl font-light serif italic mb-4">Grooming Menu</h2>
+                <div class="h-px w-24 bg-[#c5a059] mx-auto"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 mb-20">
+                <!-- Hair Section -->
+                <div class="space-y-6">
+                    <h3 class="text-xs tracking-[0.3em] uppercase text-gold mb-8">Hair Design</h3>
+                    
+                    <div onclick="selectAndBook('The Signature Cut', '15 BHD')" class="luxury-card p-8 flex justify-between items-center cursor-pointer group">
+                        <div>
+                            <h4 class="text-xl serif italic group-hover:text-[#c5a059] transition-colors">The Signature Cut</h4>
+                            <p class="text-xs text-gray-500 mt-1">Consultation, precision cut, wash & style.</p>
+                        </div>
+                        <div class="text-xl font-light">15 BHD</div>
+                    </div>
+
+                    <div onclick="selectAndBook('Classic Scissor Cut', '12 BHD')" class="luxury-card p-8 flex justify-between items-center cursor-pointer group">
+                        <div>
+                            <h4 class="text-xl serif italic group-hover:text-[#c5a059] transition-colors">Classic Scissor Cut</h4>
+                            <p class="text-xs text-gray-500 mt-1">Traditional hand-crafted precision tailoring.</p>
+                        </div>
+                        <div class="text-xl font-light">12 BHD</div>
+                    </div>
+
+                    <div onclick="selectAndBook('Skin Fade', '18 BHD')" class="luxury-card p-8 flex justify-between items-center cursor-pointer group">
+                        <div>
+                            <h4 class="text-xl serif italic group-hover:text-[#c5a059] transition-colors">Executive Skin Fade</h4>
+                            <p class="text-xs text-gray-500 mt-1">Advanced fading technique with razor finish.</p>
+                        </div>
+                        <div class="text-xl font-light">18 BHD</div>
+                    </div>
+                </div>
+
+                <!-- Face/Beard Section -->
+                <div class="space-y-6">
+                    <h3 class="text-xs tracking-[0.3em] uppercase text-gold mb-8">Beard & Face</h3>
+                    
+                    <div onclick="selectAndBook('Luxury Hot Towel Shave', '10 BHD')" class="luxury-card p-8 flex justify-between items-center cursor-pointer group">
+                        <div>
+                            <h4 class="text-xl serif italic group-hover:text-[#c5a059] transition-colors">Luxury Hot Towel Shave</h4>
+                            <p class="text-xs text-gray-500 mt-1">Traditional straight razor with essential oils.</p>
+                        </div>
+                        <div class="text-xl font-light">10 BHD</div>
+                    </div>
+
+                    <div onclick="selectAndBook('Beard Sculpting', '8 BHD')" class="luxury-card p-8 flex justify-between items-center cursor-pointer group">
+                        <div>
+                            <h4 class="text-xl serif italic group-hover:text-[#c5a059] transition-colors">Beard Sculpting</h4>
+                            <p class="text-xs text-gray-500 mt-1">Line-up, trimming, and hydrating treatment.</p>
+                        </div>
+                        <div class="text-xl font-light">8 BHD</div>
+                    </div>
+
+                    <div onclick="selectAndBook('The Full Experience', '25 BHD')" class="luxury-card p-8 flex justify-between items-center cursor-pointer group border-gold/40">
+                        <div>
+                            <h4 class="text-xl serif italic group-hover:text-[#c5a059] transition-colors text-gold">The Full Editorial</h4>
+                            <p class="text-xs text-gray-500 mt-1">Signature cut + Beard sculpt + Facial refresh.</p>
+                        </div>
+                        <div class="text-xl font-light">25 BHD</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BOOKINGS TAB -->
+        <section id="bookings" class="tab-content fade-in max-w-4xl mx-auto px-6 py-12">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl serif italic mb-2">Reserve Your Appointment</h2>
+                <p class="text-gray-500 text-sm tracking-widest uppercase">Select time and professional</p>
+            </div>
+
+            <div class="bg-zinc-900/50 border border-white/5 p-8 md:p-12 rounded-sm shadow-2xl">
+                <!-- Service Selection Card -->
+                <div id="booking-selection-notice" class="mb-10 p-6 bg-zinc-950 border border-gold/30 rounded flex flex-col md:flex-row items-center justify-between">
+                    <div class="text-center md:text-left mb-4 md:mb-0">
+                        <span class="text-[10px] uppercase tracking-[0.2em] text-gold block mb-1">Selected Service</span>
+                        <h4 id="selected-service-display" class="text-2xl serif italic text-white">Please select a service</h4>
+                    </div>
+                    <button onclick="showTab('services')" class="text-[10px] uppercase tracking-widest text-gray-500 hover:text-gold transition-colors border-b border-transparent hover:border-gold pb-1">
+                        Change Service
+                    </button>
+                </div>
+
+                <div id="calendly-wrapper" class="space-y-8">
+                    <div
+                        id="calendly-widget"
+                        style="min-width:320px;height:700px;">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT TAB -->
+        <section id="contact" class="tab-content fade-in max-w-7xl mx-auto px-6 py-12">
+            <div class="grid md:grid-cols-2 gap-20">
+                <div class="space-y-12">
+                    <div>
+                        <h2 class="text-5xl serif italic mb-6">Visit Us</h2>
+                        <p class="text-gray-400 leading-relaxed font-light mb-8">
+                            Located in the prestigious Hamala neighborhood of Bahrain, we provide an oasis of calm and refinement for the modern gentleman.
+                        </p>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-6">
+                            <div class="text-gold mt-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="uppercase tracking-widest text-xs mb-2">Address</h4>
+                                <p class="text-sm font-light">Avenue 79, Hamala, Bahrain<br>Building 1204, Suite 2</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-6">
+                            <div class="text-gold mt-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="uppercase tracking-widest text-xs mb-2">Hours</h4>
+                                <p class="text-sm font-light">Monday – Saturday: 10:00 AM – 10:00 PM<br>Sunday: Closed</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-6">
+                            <div class="text-gold mt-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="uppercase tracking-widest text-xs mb-2">Contact</h4>
+                                <p class="text-sm font-light">T: +973 1700 0000<br>E: concierge@topcutbh.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Simple Contact Form -->
+                <div class="bg-[#111] p-10 border border-white/5">
+                    <h3 class="text-xl serif italic mb-8">Send an Inquiry</h3>
+                    <div class="space-y-6">
+                        <input type="text" placeholder="Name" class="w-full bg-transparent border-b border-white/10 py-3 focus:outline-none focus:border-gold">
+                        <input type="email" placeholder="Email Address" class="w-full bg-transparent border-b border-white/10 py-3 focus:outline-none focus:border-gold">
+                        <textarea placeholder="Message" rows="4" class="w-full bg-transparent border-b border-white/10 py-3 focus:outline-none focus:border-gold resize-none"></textarea>
+                        <button class="w-full py-4 border border-gold text-gold uppercase tracking-widest text-[10px] hover:bg-gold hover:text-white transition-all">Submit Inquiry</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-white/5 mt-20">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-xs tracking-widest text-gray-600 uppercase">
+            <div class="mb-4 md:mb-0">© 2024 TOPCUTBH LUXURY GROOMING</div>
+            <div class="flex space-x-8">
+                <a href="#" class="hover:text-gold">Instagram</a>
+                <a href="#" class="hover:text-gold">Twitter</a>
+                <a href="#" class="hover:text-gold">Facebook</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Notification system for demo -->
+    <div id="toast" class="fixed bottom-10 right-10 bg-zinc-800 text-white px-6 py-4 rounded-sm shadow-2xl translate-y-24 opacity-0 transition-all duration-500 z-[100] border-l-4 border-gold">
+        <p id="toast-msg" class="text-sm font-light"></p>
+    </div>
+
+    <script>
+        let currentSelectedService = null;
+
+        function showTab(tabId) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            // Show selected tab
+            const activeTab = document.getElementById(tabId);
+            activeTab.classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        function selectAndBook(serviceName, price) {
+            const selectedService = `${serviceName} — ${price}`;
+
+            // Update UI
+            document.getElementById('selected-service-display').innerText = selectedService;
+
+            // Show bookings tab first
+            showTab('bookings');
+
+            setTimeout(() => {
+                const widget = document.getElementById('calendly-widget');
+
+                // HARD reset (important)
+                widget.innerHTML = "";
+
+                Calendly.initInlineWidget({
+                    url: "https://calendly.com/usertest130804",
+                    parentElement: widget,
+                    prefill: {
+                        customAnswers: {
+                            a1: selectedService // ✅ this matches your question
+                        }
+                    }
+                });
+            }, 200);
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            const text = document.getElementById('toast-msg');
+            text.innerText = msg;
+            toast.classList.remove('translate-y-24', 'opacity-0');
+            
+            setTimeout(() => {
+                toast.classList.add('translate-y-24', 'opacity-0');
+            }, 3000);
+        }
+
+        // Mobile Menu logic (Simple)
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            showToast("Mobile menu coming soon");
+        });
+
+        // Booking form submission mock
+        document.getElementById('booking-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            if (!currentSelectedService) {
+                showToast("Please select a service first.");
+                showTab('services');
+                return;
+            }
+
+            showToast("Booking request sent successfully.");
+            setTimeout(() => {
+                showTab('home');
+                currentSelectedService = null;
+                document.getElementById('selected-service-display').innerText = "Please select a service";
+                document.getElementById('selected-service-display').classList.add('text-gray-500');
+                e.target.reset();
+            }, 2000);
+        });
+    </script>
+    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+</body>
+</html>
